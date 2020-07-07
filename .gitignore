@@ -1,0 +1,47 @@
+HELP.md
+target/
+classes/
+out/
+images/*
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*.mvn
+*.log
+*.trc
+
+###eclipse###
+.classpath
+.project
+.setttings
+
+### VS Code ###
+.vscode/
+
+###plm ###
+bat/
+bin/
+appClientModule/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
