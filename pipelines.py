@@ -100,7 +100,7 @@ class MysqlTwistedPipelines(object):
         print(failure)
     def do_insert(self, cursor, item):
         #根据不同的item 构建不同的sql语句并插入到mysql中
-        if item['class_name']  != "":
+        #if item['class_name']  != "":
             insert_sql, params = item.get_insert_sql()
             cursor.execute(insert_sql, params)
 

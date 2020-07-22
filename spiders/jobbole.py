@@ -8,7 +8,7 @@ from JobboleSpider.items import JobbolespiderItem
 class JobboleSpider(scrapy.Spider):
     name = 'jobbole'
     allowed_domains = ['www.imooc.com']
-    start_urls = ['https://www.imooc.com/course/list?page=30']
+    start_urls = ['https://www.imooc.com/course/list?page=29']
 
     def parse(self, response):
         """
@@ -42,7 +42,7 @@ class JobboleSpider(scrapy.Spider):
                 url = next_url.xpath('./@href').extract_first("")
                 print("下一页url:"+parse.urljoin(response.url,url))
                 #提取下一页并交给scrapy进行下载
-                yield Request(url=parse.urljoin(response.url,url),callback=self.parse)
+                # yield Request(url=parse.urljoin(response.url,url),callback=self.parse)
                 #print("跳出for循环:")
                 break
 

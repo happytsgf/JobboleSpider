@@ -72,12 +72,27 @@ ITEM_PIPELINES = {
 IMAGES_URLS_FIELD = "class_img"
 project_dir = os.path.abspath(os.path.dirname(__file__))
 IMAGES_STORE = os.path.join(project_dir, 'images')
+
+
+
+import sys
+BASE_DIR = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+sys.path.insert(0, os.path.join(BASE_DIR, 'JobboleSpider'))
+
+USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0"
+
+
 #mysql 配置信息
 MYSQL_HOST = "127.0.0.1"
 MYSQL_DB = "python"
 MYSQL_PORT = 3306
 MYSQL_USER = "root"
 MYSQL_PASSWD = "Xtep@2019"
+
+SQL_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+SQL_DATE_FORMAT = "%Y-%m-%d"
+
+
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
