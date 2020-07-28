@@ -2,7 +2,8 @@
 import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
-from JobboleSpider.items import LagouJobItemLoader,LagouJobItem
+from JobboleSpider.items import LagouJobItemLoader, LagouJobItem
+from JobboleSpider.utils.common import get_md5
 
 
 
@@ -31,9 +32,13 @@ class LagouSpider(CrawlSpider):
 
     def parse_job(self, response):
         print("entry the parse_job")
-        item_loader = LagouJobItemLoader(item=LagouJobItem, response=response)
-        item_loader['domain_id'] = response.xpath('//input[@id="sid"]/@value').get()
+        item_loader = LagouJobItemLoader(item=LagouJobItem(), response=response)
+        item_loader.add_css("title", ".job-name::attr(title)")
+        item_loader.add_value("url", response.url)
+        item_loader.add_value("url_object_id", get_md5(response.url))
+        item_loader.add_css("salary", ".job_request .salary::text")
+        item_loader.add_xpath("job_city", "//*[@class='job_request']/p/span[2]/text()")
         #item['name'] = response.xpath('//div[@id="name"]').get()
         #item['description'] = response.xpath('//div[@id="description"]').get()
-
-        return item_loader.load_item()
+        item = item_loader.load_item()
+        return item

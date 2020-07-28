@@ -52,9 +52,10 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'JobboleSpider.middlewares.JobbolespiderDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'JobboleSpider.middlewares.RandomUserAgentMiddlware': 543,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None, # 最好将默认的middleware注释，或者优先级设置的比自定义的小
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -80,7 +81,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'JobboleSpider'))
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0"
-
+RANDOM_UA_TYPE = "random" #用来配置   fake_useragent使用什么浏览器模式
 
 #mysql 配置信息
 MYSQL_HOST = "127.0.0.1"
